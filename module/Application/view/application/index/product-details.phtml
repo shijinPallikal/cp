@@ -1,0 +1,254 @@
+<script src="/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script>
+//var $j = jQuery.noConflict();
+</script>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        var options = {  
+            url:        'contacts/email', 
+            dataType: 'html',
+            beforeSubmit: function()
+            { 
+               // $("#emsg").html('<img src="/images/photos/loading.gif" width="20" height="20" >');
+            },
+            
+            success:    function(data) { 
+           
+                $('#msg').html(data);
+
+                $('#msg').delay(2000).fadeOut();
+                
+               $("#contactus_form")[0].reset();
+            } 
+        }; 
+   
+        $('#contactus_form').ajaxForm(options);
+    });
+</script>
+<style type="text/css">
+    .widget111 
+    {
+        background-color:#FFFFFF;
+        background-position:initial initial;
+        background-repeat:initial initial;
+        border:1px solid #EEEEEE;
+        margin-bottom:10px;
+        padding:8px 10px;
+
+        border-top-color:#FF5D5E;
+        border-top-style:solid;
+        border-top-width:1px;
+        height: 118px;
+    }
+
+</style>
+
+<!-- banner starts -->
+
+<div class="page-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <div class="feature-one">
+          <!-- Feature One Item -->
+          <div class="feature-one-item">
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <!-- Feature One Image -->
+                <div class="feature-one-image">
+                  <!-- Image -->
+                  <a href="#"><img src="/images/photos/inner1.png" alt="" class="img-responsive" /></a>
+                </div>
+              </div>
+              <div class="col-md-9 col-sm-9">
+                <!-- Feature One Content -->
+                <div class="feature-one-content">
+                  <!-- Heading -->
+                  <h1><strong><span class="featurespan">WE OFFER</span><br><span style="color:#3e92d0;">NORMAL, MOBILE, RESPONSIVE</span><br>
+                    <span class="featurespan"> WEBSITE</span></strong>
+                                    </h1>
+                                    <p style="color:#036; font-size:18px;">Increase the Opportunities of your buisiness to attract more customers</p>
+                  <!-- Paragraph -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<img src="img/photos/paket_bnr.jpg" class="img-responsive">-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- banner ends -->
+
+<div class="sep"></div>
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs ban_innerpage">
+  <div class="container" style="padding-top:20px;">
+        <h2 class="pull-left">Product Details</h2>
+            <ul class="pull-right breadcrumb">
+                <li><a href="responsive.php">Responsive Samples</a></li> 
+                <li><a href="whyresponsive.php">Why You Should Go Responsive</a></li> 
+                <li><a href="ecommerce.php">Ecommerse</a></li> 
+                <li><a href="products.php" >Our Products</a> </li>
+            </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<div class="sep"></div>
+
+<div class="content blog">
+	<div class="container">
+    	<div class="row">
+     		<!-- first column starts -->
+      		<div class="col-md-8">
+				<div class="posts">
+					<div class="comments well">
+						<div class="product">
+          					<div class="row">
+	            				<div class="col-md-12">
+	            				<?php
+	            					foreach ($getSmallPackagesData as $key => $value)
+	            					{
+
+	            					?>
+		              				<!-- Image. Flex slider -->
+		                			<div class="comments well pull-left"  style="margin-right:20px; width:50%;">
+		                   				<img src="/images/products/small_package/<?php echo $value['image1']; ?>" alt="" class="img-responsive"/>
+		                   				<div class="clearfix"></div>
+		            				</div>
+		            				<div class="right">
+		              	    			<!-- Title -->
+		                    			<h4><?php echo $value['product_title']; ?></h4>
+		                    			<hr>
+		              	    			<p style="text-align: justify;"><?php echo $value['description']; ?></p>
+		                            </div>
+		                            <?php
+		                            }
+		                            ?>  
+	            				</div>	
+            				</div>
+        				</div>
+					</div>
+	       	    	<div class="clearfix"></div>
+				</div>
+				<span style="float:right; color:#808080;"><a href="/">Back To Home</a></span>
+            	<div class="posts"></div>
+			</div>
+	    
+	<!-- first column ends -->
+	<div class="col-md-4">
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- Widget -->
+			<div class="widget">
+				<h4>Yes, please contact and tell Us more:</h4>
+				
+                <div id="emsg" style="font-size:12px; float:right; color:red;"></div>
+                        <div id="msg" style="font-size:12px; float:right; color:red;"></div>
+                        <form class="form-inline" role="form" name="contactus_form" id="contactus_form" method="post" action="contacts" >
+                            <div class="form-group">
+                                <input type="text" class="form-control mar_top" id="company" name="company" placeholder="Company Name..." required>
+                                <input type="text" class="form-control mar_top" id="cp" name="cp" placeholder="Contact Person..." required>
+                                <input type="text" class="form-control mar_top" id="phone" name="phone" placeholder="Phone Number..." required>
+                                <input type="email" class="form-control mar_top" id="email" name="email" placeholder="Email..." required>
+                            </div>
+                            <h5>Iam Most Interested in</h5>
+                            <div class="checkbox" >
+                                <label>
+                                    <input type="checkbox" id="ch1" name="ch1" value="Homepage"> Homepage
+                                </label>
+                            </div>
+          
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch2" name="ch2" value="Homepage Mobile"> Homepage Mobile
+                                </label>
+                            </div>
+                   
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch3" name="ch3" value="Homepage Responsive"> Homepage Responsive
+                                </label>
+                            </div>
+                    
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="ch4" name="ch4" value="E-Commerse"> E-Commerse
+                                </label>
+                            </div>
+          
+                            <div class="selectbox">
+                                <select class="form-control" id="sel" name="sel">
+                                    <option value="">Please select..</option>
+                                    <option value="CMS">CMS</option>
+                                    <option value="Wordpress">Wordpress</option>
+                                </select>
+                            </div>                                  
+
+                            <button type="submit"  class="btn btn-danger mar_top">Send</button>
+                        </form>
+			</div>
+            
+			
+                        <?php
+                        $c= count($listContactusDatas);
+                        foreach ($listContactusDatas as $key => $value)
+                        {
+                          $title[]= $value['title'];
+                          $dis[]= $value['description'];
+                          $country[]= $value['country'];
+                          $phone[]= $value['phone'];
+                          $service[]= $value['service_email'];
+                         
+                        }
+                        ?>
+                        <div class="widget111">
+                        <h4>Contact Us</h4>
+                        <?php
+                        for($i= 0; $i<= $c-1; $i++)
+                        {
+                            ?>
+                            <div style='width:200px;float:left;'>
+                                <span style='width:55px; float:left;'>
+                                    <?php
+                                        if($country[$i] == "Sweden")
+                                        {
+                                          echo "Sverige";
+                                        }
+                                        else
+                                        {
+                                          echo ucfirst($country[$i]);
+                                        }
+                                    ?>
+                                </span>
+                                <span style='font-size:12px;float:left; width:10px;'>:</span>
+                                <span style='width:90px; float:left;'><?php echo $phone[$i] ?></span>
+                            </div>
+                        <?php
+                        }
+                        ?>
+
+                    </div> 
+                    
+
+			<div class="widget">
+				<h4>We will help you succeed on the Web</h4>
+                <p>We create a website for your needs at a good price.</p>
+                <p class="bold">Get a great looking website today!</p>
+			</div>
+                                              
+		</div>
+        <!-- Sidebar ends -->                                                
+	</div>
+    <!-- colmd4 ends -->
+    
+  </div>
+  <!-- row ends -->
+ </div>
+ <!-- container ends -->
+</div>
+<!-- content blog ends -->
