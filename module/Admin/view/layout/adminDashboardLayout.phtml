@@ -14,14 +14,24 @@
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/imgages/favicon/favicon.png'))
                         ->prependStylesheet($this->basePath() . '/css/admin/style/style.css')
                         ->prependStylesheet($this->basePath() . '/css/admin/bootstrap-theme.min.css')
+<<<<<<< HEAD
                         ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap.min.css')
                         ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap-responsive.min.css')
                         ->prependStylesheet($this->basePath() . '/css/admin/assets/styles.css');
+=======
+                        ->prependStylesheet($this->basePath() . '/css/admin/assets/jquery-ui.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/vendors/easypiechart/jquery.easy-pie-chart.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/assets/styles.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/css/prettify.css')
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
                       
         ?>
         <!-- Scripts -->
         <?php echo $this->headScript()
             ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+<<<<<<< HEAD
             ->prependFile($this->basePath() . '/js/admin/js/jquery.validate.js')
             ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -29,6 +39,73 @@
             ->prependFile($this->basePath() . '/js/admin/js/jquery-1.7.2.js')
 
         ; ?>
+=======
+            
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.js')
+            //->prependFile($this->basePath() . '/js/admin/js/jquery.ui.core.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/ckeditor/ckeditor.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/ckeditor/adapters/jquery.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.ui.datepicker.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.multidatespicker.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.validate.js')
+            ->prependFile($this->basePath() . '/js/admin/vendors/easypiechart/jquery.easy-pie-chart.js')
+            //->prependFile($this->basePath() . '/js/admin/assets/scripts.js')
+            //->prependFile($this->basePath() . '/js/admin/js/prettify.js')
+            //->prependFile($this->basePath() . '/js/admin/js/lang-css.js')
+            //->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            //->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-1.7.2.js')
+
+        ; ?>
+        
+        <style>
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+    background: #743620 none; /* a color that fits the widget theme */
+    color: white; /* a color that is readeable with the color above */
+}
+</style>
+         
+<script>
+  $(function() {
+    //  alert('c');
+      $('#setofferid').val('0');
+      
+      
+    $( "#from" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true,
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    
+    
+    
+    
+    $( "#to" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
+      showOn: "button",
+      buttonImage: "images/calendar.gif",
+      buttonImageOnly: true,
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  
+ 
+  </script>
+  
+    
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -59,13 +136,18 @@
                             </li>-->
                             <li class="dropdown">
                               
+<<<<<<< HEAD
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle"> Master  <b class="caret"></b>
+=======
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php if($languageId == 2){?>(Hem)<br><?php } ?>Home  <b class="caret"></b>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
 
                                 </a>
                                 <ul class="dropdown-menu" id="menu1">
                                     
                                     <li>
 
+<<<<<<< HEAD
                                         <a href="/admin/category/add">Category Master</a>
                                     </li>
                                     <li class="divider"></li>
@@ -92,20 +174,44 @@
                                         <a href="/admin/employee/add">Employee Master</a>
                                        
                                     </li>  
+=======
+                                        <a href="/admin/slider">Home Page sliders</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <!--<li>
+                                    <a href="<?php echo $this->basePath().'/admin/bigPackage';?>">
+                                        Big Packages
+                                    </a>
+                                    </li>
+                                    <li class="divider"></li>-->
+                                    <li>
+                                        <a href="<?php echo $this->basePath().'/admin/smallPackage';?>">
+                                            Products
+                                        </a>
+                                    </li>                                 
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
   
                                 </ul>
                         </li>
                   
                        <li class="dropdown">
                         
+<<<<<<< HEAD
                                 <a href="/admin/purchase/add" data-toggle="dropdown" class="dropdown-toggle">Purchase Management<b class="caret"></b>
+=======
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php if($languageId == 2){?>(Ecommerce)<br><?php } ?>Ecommerce <b class="caret"></b>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
 
                                 </a>
                                 <ul class="dropdown-menu" id="menu1">
                                     
                                   
                                      <li>
+<<<<<<< HEAD
                                          <a href="/admin/purchase/add">Purchase</a>
+=======
+                                         <a href="/admin/ecommercePackage">E-commerce Package</a>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
                                     </li>
 <!--                                <li class="divider"></li>-->
                                     
@@ -116,7 +222,11 @@
                             
                              <li class="dropdown">
                               
+<<<<<<< HEAD
                                    <a href="/admin/purchase/add" data-toggle="dropdown" class="dropdown-toggle">Product Management <b class="caret"></b>
+=======
+                                   <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <?php if($languageId == 2){?>(Web paket)<br><?php } ?>webpackages <b class="caret"></b>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
 
                                    </a>
                                 <ul class="dropdown-menu" id="menu1">                                    
@@ -125,10 +235,17 @@
                                          <a href="<?php echo $this->basePath().'/admin/website';?>">List Webpackages</a>
                                    </li>
                                    <li class="divider"></li>
+<<<<<<< HEAD
 <!--                               <li>
                                          <a href="<?php //echo $this->basePath().'/admin/specification/add';?>">Add Specification</a>
                                    </li>
                                    <li class="divider"></li>-->
+=======
+                                   <li>
+                                         <a href="<?php echo $this->basePath().'/admin/specification/add';?>">Add Specification</a>
+                                   </li>
+                                   <li class="divider"></li>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
                                    <li>
                                          <a href="<?php echo $this->basePath().'/admin/otherservices';?>">List Other Services</a>
                                    </li>
@@ -190,7 +307,11 @@
                                
                             <li class="dropdown">
                             
+<<<<<<< HEAD
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
+=======
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php if($languageId == 2){?>(subst)<br><?php } ?>Settings <b class="caret"></b>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
 
                                 </a>
                                 <ul class="dropdown-menu" id="menu1">
@@ -198,7 +319,50 @@
                                     <li>
                                          <a href="/admin/country">Country</a>
                                     </li>
+<<<<<<< HEAD
                                      <li class="divider"></li>                                  
+=======
+                                     <li class="divider"></li>
+                                     
+                                     <li>
+                                         <a href="/admin/logo">Logo</a>
+                                    </li>                                    
+                                     <li class="divider"></li>
+                                     
+                                     <li>
+                                         <a href="/admin/contacts">Contact details</a>
+                                    </li>   
+                                    <li class="divider"></li>
+                                    <li>
+                                         <a href="/admin/color">Color Management</a>
+                                    </li> 
+                                    <li class="divider"></li>
+                                    <li>
+                                         <a href="/admin/mailedList">Mailed List</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                         <a href="/admin/mailedList/mailedSettings">Send Mail Settings</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <!--<li>
+                                         <a href="/admin/languages">Language Settings</a>
+                                    </li>
+                                    <li class="divider"></li>-->
+
+
+                                    <li>
+                                         <a href="  <?php echo $this->basePath().'/admin/servicespagetemplate'?>">Templates</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                          <a href="<?php echo $this->basePath().'/admin/menu';?>">Menu Management</a>
+                                    </li>
+                                    
+
+
+                                   
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
                                 </ul>
                             </li>
 
@@ -216,7 +380,11 @@
             <?php echo $this->content; ?>
             <hr>
             <footer>
+<<<<<<< HEAD
                 <p>&copy; 2005 - <?php echo date('Y') ?> by XXX Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+=======
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Codexmind Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

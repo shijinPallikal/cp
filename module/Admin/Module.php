@@ -84,7 +84,7 @@ class Module
                     $table = new LoginTable($dbAdapter);
                     return $table;
                 },
-                
+ 
                 'AdminAuth' => function($sm)
                 {
                     $dbAdapter           = $sm->get('Zend\Db\Adapter\Adapter');     
@@ -93,15 +93,7 @@ class Module
                     $authService->setAdapter($dbTableAuthAdapter);      
                     //$authService->setStorage($sm->get('Album\Model\MyAuthStorage'));
                     return $authService;
-                },
-
-                'Admin\Model\MenuTable' => function($sm)
-                {
-                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                    $table = new MenuTable($dbAdapter);
-                    return $table;
-                },
-
+		}
                 'Admin\Model\CategoryTable' => function($sm)
                 {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
@@ -159,9 +151,7 @@ class Module
                     $table = new LeaveTable($dbAdapter);
                     return $table;
                 },
-                            
-
-                
+ 
             ),
         );
     }

@@ -3,7 +3,7 @@
 return array(
     
     'defaultValues' => array(
-        'upload_path'=>'/var/www/cp/public',
+        'upload_path'=>'/var/www/coool/public',
         ),
     
     'router' => array(
@@ -1026,134 +1026,7 @@ return array(
 /*------------------------------------------------------------------------------------------------*/
 /*----------------------------------Employee Controller End -----------------------------------------*/            
 /*------------------------------------------------------------------------------------------------*/
-/* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
- /* ----------------------------------- Leave Controller ------------------------------------------------------------------------- */
- /* ------------------------------------------------------------------------------------------------------------------------------------------ */
-            
-                    'leave' => array(
-                        'type' => 'literal',
-                        'options' => array(
-                            'route' => '/leave',
-                            'defaults' => array(
-                                '__NAMESPACE__' => 'Admin\Controller',
-                                'controller' => 'Leave',
-                                'action' => 'index'
-                            ),
-                        ),
-                        'may_terminate' => true,
-                        'child_routes' => array(
-                            'default' => array(
-                                'type'    => 'Segment',
-                                'options' => array(
-                                    'route'    => '/[:controller[/:action]]',
-                                    'constraints' => array(
-                                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                    ),
-                                    'defaults' => array(
-                                    ),
-                                ),
-                            ),
-                
-                            
-                            /*Leave Add Action */
-                            'add' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/add[/:page]',
-                                    'constraints' => array(
-                                        'page'=> '[0-9]+'
-                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'add'
-                                    )
-                                )
-                            ),
-                            /* Leave Add Action End */
-
-                             /*Leave Delete Action */
-                            'delete' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/delete[/:id]',
-                                    'constraints' => array(
-                                        'id' => '[0-9]+',                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'delete'
-                                    )
-                                )
-                            ),
-                            /* Leave Delete Action End */
-
-
-                            /*Leave ajaxlist Action */
-                            'ajaxList' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/ajaxList',
-                                    'constraints' => array(
-                                        'id' => '[0-9]+',                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'ajaxList'
-                                    )
-                                )
-                            ),
-                            /* Leave ajaxlist Action End */
-
-                            /*Leave status Action */
-                            'statusOn' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/statusOn[/:id]',
-                                    'constraints' => array(
-                                        'id' => '[0-9]+',                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'statusOn'
-                                    )
-                                )
-                            ),
-                            
-                            'statusOff' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/statusOff[/:id]',
-                                    'constraints' => array(
-                                        'id' => '[0-9]+',                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'statusOff'
-                                    )
-                                )
-                            ),
-                            
-                            /* Leave status Action End */
-
-                            /*Leave Edit Action */
-                            'edit' => array(
-                                'type' => 'segment',
-                                'options' => array(
-                                   'route' => '/edit[/:id]',
-                                    'constraints' => array(
-                                        'id' => '[0-9]+',                                       
-                                    ),
-                                    'defaults' => array(
-                                        'action' => 'edit'
-                                    )
-                                )
-                            ),
-                            /* Leave edit Action End */
-
-                            
-                        )
-                    ),
-/*------------------------------------------------------------------------------------------------*/
-/*----------------------------------Leave Controller End -----------------------------------------*/            
-/*------------------------------------------------------------------------------------------------*/
-                     
+                    
 
                     
                     
@@ -1188,7 +1061,6 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'Admin\Controller\Category' => 'Admin\Controller\CategoryController',
             'Admin\Controller\Uom' => 'Admin\Controller\UomController',
             'Admin\Controller\Menu' => 'Admin\Controller\MenuController',

@@ -1837,7 +1837,11 @@ margin: auto ;background-color:#CCCCCC;margin-top: 30px; overflow:hidden;
 -moz-transition: all 0.4s ease-in-out 0s;
 -o-transition: all 0.4s ease-in-out 0s;
 transition: all 0.4s ease-in-out 0s;
+<<<<<<< HEAD
 -webkit-box-sizing:content-box!important;-moz-box-sizing:content-box!important;box-sizing:content-box!important;
+=======
+-webkit-box-sizing:content-box!important;-moz-box-sizing:content-box!important;box-sizing:content-box!important;"
+>>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
 }
 
 
