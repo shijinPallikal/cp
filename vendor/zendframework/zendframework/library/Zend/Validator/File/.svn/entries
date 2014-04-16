@@ -1,0 +1,161 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/library/Zend/Validator/File
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+Count.php
+file
+
+
+
+add
+
+MimeType.php
+file
+
+
+
+add
+
+Sha1.php
+file
+
+
+
+add
+
+FilesSize.php
+file
+
+
+
+add
+
+NotExists.php
+file
+
+
+
+add
+
+IsCompressed.php
+file
+
+
+
+add
+
+ExcludeMimeType.php
+file
+
+
+
+add
+
+Size.php
+file
+
+
+
+add
+
+Crc32.php
+file
+
+
+
+add
+
+Extension.php
+file
+
+
+
+add
+
+ImageSize.php
+file
+
+
+
+add
+
+IsImage.php
+file
+
+
+
+add
+
+Exists.php
+file
+
+
+
+add
+
+Hash.php
+file
+
+
+
+add
+
+UploadFile.php
+file
+
+
+
+add
+
+WordCount.php
+file
+
+
+
+add
+
+Upload.php
+file
+
+
+
+add
+
+Md5.php
+file
+
+
+
+add
+
+ExcludeExtension.php
+file
+
+
+
+add
+

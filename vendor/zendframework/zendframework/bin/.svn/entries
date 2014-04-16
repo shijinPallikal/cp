@@ -1,0 +1,77 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/bin
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+autoload_examples.php
+file
+
+
+
+add
+
+classmap_generator.php
+file
+
+
+
+add
+
+createAutoloadTestClasses.php
+file
+
+
+
+add
+
+templatemap_generator.php
+file
+
+
+
+add
+
+pluginmap_generator.php
+file
+
+
+
+add
+
+autoload_example.php
+file
+
+
+
+add
+
+check-cs.sh
+file
+
+
+
+add
+

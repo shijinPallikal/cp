@@ -1,0 +1,98 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/library/Zend/Authentication/Adapter
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+Exception
+dir
+
+
+
+add
+
+Http
+dir
+
+
+
+add
+
+ValidatableAdapterInterface.php
+file
+
+
+
+add
+
+DbTable.php
+file
+
+
+
+add
+
+Digest.php
+file
+
+
+
+add
+
+Http.php
+file
+
+
+
+add
+
+Ldap.php
+file
+
+
+
+add
+
+AdapterInterface.php
+file
+
+
+
+add
+
+AbstractAdapter.php
+file
+
+
+
+add
+
+DbTable
+dir
+
+
+
+add
+

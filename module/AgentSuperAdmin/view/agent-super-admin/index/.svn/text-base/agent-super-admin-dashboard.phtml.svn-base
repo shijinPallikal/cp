@@ -1,0 +1,39 @@
+<script type="text/javascript">
+
+    
+    $(document).ready(function() {
+        showTable();
+
+    });
+    
+    function showTable()
+    {
+        
+        $.ajax({
+
+            type:"POST",
+            url:"/agentSuperAdmin/index/ajaxList",
+            cache:false,
+            data:{},
+            dataType:"html",
+            success:function(data)
+            {
+                //alert(data);
+                $("#ajx_table").html(data);
+                //showTable(srt);
+            }
+        });
+    }
+</script>
+<div class="block-content collapse in">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th colspan="8" style= "text-align:center;">Common Settings</th>
+        </thead>
+        <tbody>
+        <div id="ajx_table"></div> 
+            
+        </tbody>
+    </table>
+</div>

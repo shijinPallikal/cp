@@ -1,0 +1,38 @@
+<div class="control-group" id="cp">
+    <div class="controls" style="margin-left: 0;">
+        <table border="0">
+            <tr><td><input type="hidden" id="hid" ><input type="hidden" id="hidQuan" ></td></tr>
+            <tr>
+                <td>
+                    <select id="product" name="product[]" onChange="getMaterialId(this.value)" required>
+                        <option value="">Select Product</option>
+                        <?php 
+                        foreach ($rowmaterial as $key => $value)
+                        {
+                            echo '<option value="'.$value['id'].'">'.$value['item'].'</option>';
+                        }                       
+                        ?>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="quantity[]" id="quantity" onChange="getQuantity(this.value)" required>
+                </td>
+                <td>
+                    <select id="uom" name="uom[]" onChange="getUom(this.value)" required>
+                        <option value="">Select UOM</option>
+                        <?php 
+                        foreach ($uom as $key => $values)
+                        {
+                            echo '<option value="'.$values['id'].'">'.$values['uom'].'</option>';
+                        }                       
+                        ?>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" name="rate[]" id="rate" required>
+                </td>
+                <td><img src="/images/minus.png" border="0" id="close"></td>
+            </tr>
+        </table>
+    </div>
+</div>

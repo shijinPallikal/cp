@@ -1,0 +1,667 @@
+<?php
+
+return array(
+    
+    'defaultValues' => array(
+        'upload_path'=>'/var/www/coool/public',
+        ),
+    
+    'router' => array(
+        'routes' => array(
+            
+                    
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
+ /* ------------------------------------------------- Adminpanel Controller ------------------------------------------------------------------------ */
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */        
+                    
+            'admin' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/admin',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller' => 'Index',
+                        'action' => 'index'
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(  
+                    'index' => array(
+                        'type' => 'segment',
+                        'options'=> array(
+                            'route' => '/index',
+                            'constraints' => array(
+                                    //'action1' => '[a-zA-Z0-9_-]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'index'
+                            )
+                        )
+                    ),
+                      
+                    'adminAuthenticate' => array(
+                        'type' => 'segment',
+                        'options'=> array(
+                           'route' => '/adminAuthenticate',
+                           'constraints' => array(
+                                //'action1' => '[a-zA-Z0-9_-]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'adminAuthenticate'
+                            )
+                        )
+                    ),
+                                       
+                    'adminDashboard' => array(
+                        'type' => 'segment',
+                        'options'=> array(
+                            'route' => '/adminDashboard',
+                            'constraints' => array(
+                                //'action1' => '[a-zA-Z0-9_-]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'adminDashboard'
+                            )
+                        )
+                    ),
+
+                    'adminLogout' => array(
+                        'type' => 'segment',
+                        'options'=> array(
+                           'route' => '/adminLogout',
+                           'constraints' => array(
+                                //'action1' => '[a-zA-Z0-9_-]+'
+                            ),
+                            'defaults' => array(
+                                'action' => 'adminLogout'
+                            )
+                        )
+                    ),
+
+
+
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
+ /* ----------------------------------- Category Controller ------------------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */
+            
+                    'category' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/category',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Admin\Controller',
+                                'controller' => 'Category',
+                                'action' => 'index'
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'default' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/[:controller[/:action]]',
+                                    'constraints' => array(
+                                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ),
+                                    'defaults' => array(
+                                    ),
+                                ),
+                            ),
+                
+                            
+                            /*category Add Action */
+                            'add' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/add[/:page]',
+                                    'constraints' => array(
+                                        'page'=> '[0-9]+'
+                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'add'
+                                    )
+                                )
+                            ),
+                            /* category Add Action End */
+
+                             /*category Delete Action */
+                            'delete' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'delete'
+                                    )
+                                )
+                            ),
+                            /* category Delete Action End */
+
+
+                            /*category ajaxlist Action */
+                            'ajaxList' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/ajaxList',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'ajaxList'
+                                    )
+                                )
+                            ),
+                            /* category ajaxlist Action End */
+
+                            /*category status Action */
+                            'statusOn' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOn[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOn'
+                                    )
+                                )
+                            ),
+                            
+                            'statusOff' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOff[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOff'
+                                    )
+                                )
+                            ),
+                            
+                            /* category status Action End */
+
+                            /*category Edit Action */
+                            'edit' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'edit'
+                                    )
+                                )
+                            ),
+                            /* category edit Action End */
+
+                            
+                        )
+                    ),
+/*------------------------------------------------------------------------------------------------*/
+/*----------------------------------category Controller End -----------------------------------------*/            
+/*------------------------------------------------------------------------------------------------*/
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
+ /* ----------------------------------- Uom Controller ------------------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */
+            
+                    'uom' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/uom',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Admin\Controller',
+                                'controller' => 'Uom',
+                                'action' => 'index'
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'default' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/[:controller[/:action]]',
+                                    'constraints' => array(
+                                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ),
+                                    'defaults' => array(
+                                    ),
+                                ),
+                            ),
+                
+                            
+                            /*Uom Add Action */
+                            'add' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/add[/:page]',
+                                    'constraints' => array(
+                                        'page'=> '[0-9]+'
+                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'add'
+                                    )
+                                )
+                            ),
+                            /* Uom Add Action End */
+
+                             /*Uom Delete Action */
+                            'delete' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'delete'
+                                    )
+                                )
+                            ),
+                            /* Uom Delete Action End */
+
+
+                            /*Uom ajaxlist Action */
+                            'ajaxList' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/ajaxList',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'ajaxList'
+                                    )
+                                )
+                            ),
+                            /* Uom ajaxlist Action End */
+
+                            /*Uom status Action */
+                            'statusOn' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOn[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOn'
+                                    )
+                                )
+                            ),
+                            
+                            'statusOff' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOff[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOff'
+                                    )
+                                )
+                            ),
+                            
+                            /* Uom status Action End */
+
+                            /*Uom Edit Action */
+                            'edit' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'edit'
+                                    )
+                                )
+                            ),
+                            /* Uom edit Action End */
+
+                            
+                        )
+                    ),
+/*------------------------------------------------------------------------------------------------*/
+/*----------------------------------Uom Controller End -----------------------------------------*/            
+/*------------------------------------------------------------------------------------------------*/
+
+                    
+/* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
+ /* ----------------------------------- Rowmaterial Controller ------------------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */
+            
+                    'rowmaterial' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/rowmaterial',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Admin\Controller',
+                                'controller' => 'Rowmaterial',
+                                'action' => 'index'
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'default' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/[:controller[/:action]]',
+                                    'constraints' => array(
+                                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ),
+                                    'defaults' => array(
+                                    ),
+                                ),
+                            ),
+                
+                            
+                            /*category Add Action */
+                            'add' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/add[/:page]',
+                                    'constraints' => array(
+                                        'page'=> '[0-9]+'
+                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'add'
+                                    )
+                                )
+                            ),
+                            /* category Add Action End */
+
+                             /*category Delete Action */
+                            'delete' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'delete'
+                                    )
+                                )
+                            ),
+                            /* category Delete Action End */
+
+
+                            /*category ajaxlist Action */
+                            'ajaxList' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/ajaxList',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'ajaxList'
+                                    )
+                                )
+                            ),
+                            /* category ajaxlist Action End */
+
+                            /*category status Action */
+                            'statusOn' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOn[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOn'
+                                    )
+                                )
+                            ),
+                            
+                            'statusOff' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/statusOff[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'statusOff'
+                                    )
+                                )
+                            ),
+                            
+                            /* category status Action End */
+
+                            /*category Edit Action */
+                            'edit' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'edit'
+                                    )
+                                )
+                            ),
+                            /* category edit Action End */
+
+                            
+                        )
+                    ),
+/*------------------------------------------------------------------------------------------------*/
+/*----------------------------------Rowmaterial Controller End -----------------------------------------*/            
+/*------------------------------------------------------------------------------------------------*/
+                    
+/* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
+ /* --------------------------------Menu Controller ------------------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------------------------------------------------------------ */
+            
+                    'menu' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route' => '/menu',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Admin\Controller',
+                                'controller' => 'Menu',
+                                'action' => 'index'
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'default' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/[:controller[/:action]]',
+                                    'constraints' => array(
+                                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                    ),
+                                    'defaults' => array(
+                                    ),
+                                ),
+                            ),
+                
+                             /*Menu Add Action */
+                            'add' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/add',
+                                    'constraints' => array(
+                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'add'
+                                    )
+                                )
+                            ),
+                           
+                            /*Menu ajaxlist Action */
+                            'ajaxList' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/ajaxList',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'ajaxList'
+                                    )
+                                )
+                            ),
+                            /* Menu Delete Action End */
+
+                            /*Menu ajaxlist Action */
+                            'delete' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/delete',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'delete'
+                                    )
+                                )
+                            ),
+                            /* Menu Delete Action End */
+
+                            
+
+                            /*Menu status Action */
+                            'status' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/status[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'status'
+                                    )
+                                )
+                            ),
+                            /* Menu status Action End */
+
+                            /*Menu Edit Action */
+                            'edit' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'edit'
+                                    )
+                                )
+                            ),
+                            /* Menu Edit Action End */
+
+                            /*Menu Order Action */
+                            'updateMenuOrder' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/updateMenuOrder[/:id][/:order]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',
+                                        'order'=>'[0-9]+',                                      
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'updateMenuOrder'
+                                    )
+                                )
+                            ),
+
+
+
+                        )
+                    ),
+/*------------------------------------------------------------------------------------------------*/
+/*----------------------------------Menu Controller End -----------------------------------------*/            
+/*------------------------------------------------------------------------------------------------*/
+
+
+                    
+                    
+                ),
+            ),
+
+/*-------------------------------------------------------------------------------------------------*/
+           
+        ),
+    ),
+
+
+
+    'service_manager' => array(
+        'abstract_factories' => array(
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory',
+        ),
+        'aliases' => array(
+            'translator' => 'MvcTranslator',
+        ),
+    ),
+    'translator' => array(
+        'locale' => 'en_US',
+        'translation_file_patterns' => array(
+            array(
+                'type'     => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern'  => '%s.mo',
+            ),
+        ),
+    ),
+    'controllers' => array(
+        'invokables' => array(
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+            'Admin\Controller\Category' => 'Admin\Controller\CategoryController',
+            'Admin\Controller\Uom' => 'Admin\Controller\UomController',
+            'Admin\Controller\Menu' => 'Admin\Controller\MenuController',
+            'Admin\Controller\Rowmaterial' => 'Admin\Controller\RowmaterialController',
+            
+        ),
+    ),
+    
+    'controller_plugins' => array(
+               'invokables' => array(            
+               'UploadFilesLib' => 'Admin\Controller\Plugin\UploadFilesLib',
+        )
+    ),
+    
+    'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+        'doctype'                  => 'HTML5',
+        'not_found_template'       => 'error/404',
+        'exception_template'       => 'error/index',
+        'template_map' => array(
+            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'admin/index/index'       => __DIR__ . '/../view/admin/index/index.phtml',
+            'error/404'               => __DIR__ . '/../view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+        ),
+        'template_path_stack' => array(
+            __DIR__ . '/../view',
+        ),
+    ),
+    // Placeholder for console routes
+    'console' => array(
+        'router' => array(
+            'routes' => array(
+            ),
+        ),
+    ),
+);

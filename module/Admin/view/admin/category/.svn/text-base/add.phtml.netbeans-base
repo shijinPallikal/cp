@@ -1,0 +1,165 @@
+<script type="text/javascript">
+    //Status off
+    $('.ston').live('click',function()
+    {
+        var offId = $(this).attr('id'); 
+        
+        $.ajax({
+            type:"POST",
+            url:"/admin/category/statusOff",
+            cache:false,
+            data:{ offId:offId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                location.reload();
+            }
+        });
+
+    });
+
+    //Status On
+    $('.stof').live('click',function()
+    {
+        var onId = $(this).attr('id'); 
+        
+        $.ajax({
+            type:"POST",
+            url:"/admin/category/statusOn",
+            cache:false,
+            data:{ onId:onId },
+            dataType:"html",
+            success:function(data)
+            {
+                $("#msg").html(data);
+                location.reload();
+                
+            }
+        });
+
+    });
+</script>
+<div class="span9" id="content">
+    <div class="row-fluid">
+        <div class="span12">
+
+            <!-- block - -->
+
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Category Form</div>
+                    <span style="font-size:12px;color:red; margin-left:520px; float:left;">
+                        <div id="msg"></div>
+                        <?php
+                        if(count($flashMessages))
+                        {
+                            foreach ($flashMessages as $msg)
+                            {
+                                echo "<br>".$msg;   
+                            }   
+                        }
+                        ?>
+                    </span>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal" id="addCategory" name="addCategory" method="post" enctype="multipart/form-data">
+                            <fieldset>
+                                <legend>Form Components</legend>
+                               
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Item</label>
+                                    <div class="controls">
+                                        <input type="text" name="category_alias" id="category_alias" class="span6" required >
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="typeahead">Qu</label>
+                                    <div class="controls">
+                                        <input type="text" name="category" id="category" class="span6" required >
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                                    <button type="reset" class="btn" id="cancel">Cancel</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                </div>
+                <div class="navbar navbar-inner block-header">
+                    <div class="block-content collapse in">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Code</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                    <?php
+                    $cnt= count($fetchAllDatas);
+                    foreach ($fetchAllDatas as $key => $value)
+                    {
+                    ?>                         
+    	                <tr>
+                            <td><?php echo $value['id'];?></td>
+                            <td><?php echo $value['code']; ?></td>
+                            <td><?php echo $value['category']; ?></td>
+                            
+    	                    <td><?php 
+                            
+                                if($value['status'] == 1)
+                                {
+                                ?>
+                                    <img src="/images/on.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="ston">
+                                <?php
+                                }
+                                else 
+                                {
+                                    ?>
+                                    <img src="/images/off.png" border="0" width="20" height="20" id="<?php echo $value['id']; ?>" class="stof">
+                                    <?php
+                                }
+                                ?>
+                            </td>
+    	                    
+    	                    <td>
+    	                    	<a href="/admin/category/edit/<?php echo $value['id']; ?>" style="text-decoration:none;"><img src="/images/edit.png" border="0" width="20" height="20"></a>
+    	                    </td>
+                            <!--<td>
+                                <img src="/images/delete.png" id="<?php echo $value['id']; ?>" border="0" width="20" height="20" class="del" />
+                            </td>-->
+    	                </tr>
+                    <?php
+                    }
+                    ?>
+                        <tr><td colspan="6">
+                    <div align="center"><?php echo $this->paginationControl($this->fetchAllDatas, 'Elastic', 'pagination.phtml'); ?></div></td></tr>
+            </tbody>
+            </table>
+        </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+<script type="text/javascript">
+    $("#cancel").click(function()
+    {
+        window.location.href= "<?php echo $this->basePath()?>/admin/category/add";
+    });
+
+</script>

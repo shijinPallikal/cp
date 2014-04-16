@@ -1,0 +1,196 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/library/Zend/EventManager
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+ProvidesEvents.php
+file
+
+
+
+add
+
+SharedEventAggregateAwareInterface.php
+file
+
+
+
+add
+
+AbstractListenerAggregate.php
+file
+
+
+
+add
+
+Event.php
+file
+
+
+
+add
+
+StaticEventManager.php
+file
+
+
+
+add
+
+SharedEventManagerInterface.php
+file
+
+
+
+add
+
+FilterChain.php
+file
+
+
+
+add
+
+EventManagerInterface.php
+file
+
+
+
+add
+
+GlobalEventManager.php
+file
+
+
+
+add
+
+EventsCapableInterface.php
+file
+
+
+
+add
+
+Filter
+dir
+
+
+
+add
+
+ListenerAggregateTrait.php
+file
+
+
+
+add
+
+EventManagerAwareTrait.php
+file
+
+
+
+add
+
+EventInterface.php
+file
+
+
+
+add
+
+SharedEventManager.php
+file
+
+
+
+add
+
+SharedListenerAggregateInterface.php
+file
+
+
+
+add
+
+SharedEventManagerAwareInterface.php
+file
+
+
+
+add
+
+README.md
+file
+
+
+
+add
+
+Exception
+dir
+
+
+
+add
+
+composer.json
+file
+
+
+
+add
+
+ResponseCollection.php
+file
+
+
+
+add
+
+EventManager.php
+file
+
+
+
+add
+
+ListenerAggregateInterface.php
+file
+
+
+
+add
+
+EventManagerAwareInterface.php
+file
+
+
+
+add
+

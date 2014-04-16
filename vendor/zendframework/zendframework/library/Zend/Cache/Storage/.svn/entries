@@ -1,0 +1,161 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/library/Zend/Cache/Storage
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+ClearByNamespaceInterface.php
+file
+
+
+
+add
+
+ClearByPrefixInterface.php
+file
+
+
+
+add
+
+Event.php
+file
+
+
+
+add
+
+StorageInterface.php
+file
+
+
+
+add
+
+AvailableSpaceCapableInterface.php
+file
+
+
+
+add
+
+FlushableInterface.php
+file
+
+
+
+add
+
+PostEvent.php
+file
+
+
+
+add
+
+TaggableInterface.php
+file
+
+
+
+add
+
+ClearExpiredInterface.php
+file
+
+
+
+add
+
+TotalSpaceCapableInterface.php
+file
+
+
+
+add
+
+Capabilities.php
+file
+
+
+
+add
+
+PluginManager.php
+file
+
+
+
+add
+
+AdapterPluginManager.php
+file
+
+
+
+add
+
+Adapter
+dir
+
+
+
+add
+
+OptimizableInterface.php
+file
+
+
+
+add
+
+ExceptionEvent.php
+file
+
+
+
+add
+
+Plugin
+dir
+
+
+
+add
+
+IterableInterface.php
+file
+
+
+
+add
+
+IteratorInterface.php
+file
+
+
+
+add
+

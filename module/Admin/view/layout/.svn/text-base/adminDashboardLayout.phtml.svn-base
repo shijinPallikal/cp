@@ -1,0 +1,218 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Cooolwebsite') ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/imgages/favicon/favicon.png'))
+                        ->prependStylesheet($this->basePath() . '/css/admin/style/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap-theme.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/bootstrap/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/admin/assets/styles.css');
+                      
+        ?>
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery.validate.js')
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-ui.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/admin/js/jquery-1.7.2.js')
+
+        ; ?>
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/admin/adminDashboard">Admin Panel</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i><i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    
+                                    <li>
+                                        <a tabindex="-1" href="/admin/adminLogout">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <!--<li class="active">
+                                <a href="/admin/adminDashboard">Dashboard</a>
+                            </li>-->
+                            <li class="dropdown">
+                              
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> Master  <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                    <li>
+
+                                        <a href="/admin/category/add">Category Master</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    
+                                    <li>
+                                        <a href="/admin/uom/add">Unit of Measure Master</a>
+                                       
+                                    </li> 
+                                    <li class="divider"></li>
+                                    
+                                    <li>
+                                        <a href="/admin/rowmaterial/add">Rowmaterial Master</a>
+                                       
+                                    </li>   
+                                    <li class="divider"></li>
+                                    
+                                    <li>
+                                        <a href="/admin/product/add">Product Master</a>
+                                       
+                                    </li>   
+  
+                                </ul>
+                        </li>
+                  
+                       <li class="dropdown">
+                        
+                                <a href="/admin/purchase/add" data-toggle="dropdown" class="dropdown-toggle">Purchase Management<b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                  
+                                     <li>
+                                         <a href="/admin/purchase/add">Purchase</a>
+                                    </li>
+<!--                                <li class="divider"></li>-->
+                                    
+                                     
+                                   
+                                </ul>
+                            </li>
+                            
+                             <li class="dropdown">
+                              
+                                   <a href="/admin/purchase/add" data-toggle="dropdown" class="dropdown-toggle">Product Management <b class="caret"></b>
+
+                                   </a>
+                                <ul class="dropdown-menu" id="menu1">                                    
+                                  
+                                   <li>
+                                         <a href="<?php echo $this->basePath().'/admin/website';?>">List Webpackages</a>
+                                   </li>
+                                   <li class="divider"></li>
+<!--                               <li>
+                                         <a href="<?php //echo $this->basePath().'/admin/specification/add';?>">Add Specification</a>
+                                   </li>
+                                   <li class="divider"></li>-->
+                                   <li>
+                                         <a href="<?php echo $this->basePath().'/admin/otherservices';?>">List Other Services</a>
+                                   </li>
+                                   <li class="divider"></li>
+                                   <li>
+                                         <a href="<?php echo $this->basePath().'/admin/otherservices/edittitle';?>">Edit Other Services Title</a>
+                                   </li>                                
+
+                                   
+                                </ul>
+                            </li>
+                            
+                             <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Service Page 1<b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                     <li>
+                                         <a href="<?php echo $this->basePath().'/admin/servicespage/1';?>">List Service Page1</a>
+                                    </li>
+                                                                      
+<!--                                    <li class="divider"></li>-->
+                                   
+                                </ul>
+                            </li>
+                            
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Service Page 2<b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                     <li>
+                                         <a href="<?php echo $this->basePath().'/admin/servicespage/2';?>">List Service Page2</a>
+                                    </li>
+                                                                      
+
+                                   
+                                </ul>
+                            </li>
+                          
+                          
+                            
+                               
+                            <li class="dropdown">
+                              
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><?php if($languageId == 2){?>(konttakta oss)<br><?php } ?>ContactUs Pages <b class="caret"></b></a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    <li>
+                                        <a href="/admin/pages">Pages</a>
+                                    </li>
+
+                                    
+                                     
+                                   
+                                </ul>
+                            </li>
+                               
+                            <li class="dropdown">
+                            
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Settings <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    
+                                    <li>
+                                         <a href="/admin/country">Country</a>
+                                    </li>
+                                     <li class="divider"></li>                                  
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                
+        <div class="container">
+            <?php echo $this->content; ?>
+            <hr>
+            <footer>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by XXX Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+            </footer>
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

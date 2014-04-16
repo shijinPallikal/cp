@@ -1,0 +1,75 @@
+<div class="span9" id="content">
+    <div class="row-fluid">
+        <div class="span12">
+
+            <!-- block - -->
+
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Unit Of Meashure Form</div>
+                    <span style="font-size:12px;color:red; margin-left:520px; float:left;">
+                        <div id="msg"></div>
+                        <?php
+                        if(count($flashMessages))
+                        {
+                            foreach ($flashMessages as $msg)
+                            {
+                                echo "<br>".$msg;   
+                            }   
+                        }
+                        ?>
+                    </span>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <?php
+                        foreach ($editData as $value)
+                        {
+                                 
+                        ?>
+                            <form class="form-horizontal" id="addUom" name="addUom" method="post" enctype="multipart/form-data">
+                                <fieldset>
+                                    <legend>Form Components</legend>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="typeahead">code </label>
+                                        <div class="controls">
+                                            <input type="text" name="code" id="code" class="span6" value="<?php echo $value['code']?>" required >
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="typeahead">Category</label>
+                                        <div class="controls">
+                                            <input type="text" name="category" id="category" class="span6" value="<?php echo $value['category']?>" required >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                                        <button type="reset" class="btn" id="cancel">Cancel</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        <?php
+                        }
+                        ?>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+<script type="text/javascript">
+    $("#cancel").click(function()
+    {
+        window.location.href= "<?php echo $this->basePath()?>/admin/category/add";
+    });
+
+</script>

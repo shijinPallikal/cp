@@ -1,0 +1,161 @@
+10
+
+dir
+0
+https://192.168.1.130:443/svn/cp/vendor/zendframework/zendframework/library/Zend/ModuleManager/Feature
+https://192.168.1.130:443/svn/cp
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cc1d8f2a-ccff-cb40-bc0f-b4575c12c7a6
+
+RouteProviderInterface.php
+file
+
+
+
+add
+
+AutoloaderProviderInterface.php
+file
+
+
+
+add
+
+ServiceProviderInterface.php
+file
+
+
+
+add
+
+DependencyIndicatorInterface.php
+file
+
+
+
+add
+
+ControllerPluginProviderInterface.php
+file
+
+
+
+add
+
+InitProviderInterface.php
+file
+
+
+
+add
+
+ConfigProviderInterface.php
+file
+
+
+
+add
+
+InputFilterProviderInterface.php
+file
+
+
+
+add
+
+LocatorRegisteredInterface.php
+file
+
+
+
+add
+
+BootstrapListenerInterface.php
+file
+
+
+
+add
+
+SerializerProviderInterface.php
+file
+
+
+
+add
+
+ViewHelperProviderInterface.php
+file
+
+
+
+add
+
+FormElementProviderInterface.php
+file
+
+
+
+add
+
+ControllerProviderInterface.php
+file
+
+
+
+add
+
+FilterProviderInterface.php
+file
+
+
+
+add
+
+ValidatorProviderInterface.php
+file
+
+
+
+add
+
+ConsoleUsageProviderInterface.php
+file
+
+
+
+add
+
+ConsoleBannerProviderInterface.php
+file
+
+
+
+add
+
+HydratorProviderInterface.php
+file
+
+
+
+add
+

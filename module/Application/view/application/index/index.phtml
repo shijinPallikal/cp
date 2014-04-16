@@ -1,0 +1,300 @@
+<!-- Slider starts -->
+    <div class="parallax-slider">
+        <!-- Slider (Parallax Slider) -->            
+            <div id="da-slider" class="da-slider">
+              <?php
+              foreach ($listAllSliderColorDatas as $key => $color)
+              {
+                  $bgColor[]= $color['bg_color'];
+                  $disColor[]= $color['discription_color'];
+                  $st[]= $color['status'];
+                  $pattern[]= $color['pattern'];
+                  $patSta[]= $color['pattern_status'];
+                  $opacity[]= $color['opacity'];
+              }
+
+              foreach ($listAllSliderDatas as $key => $value1)
+              {
+                
+              ?>
+                <div class="da-slide">
+                    <h2>
+                        <span>
+                            <?php
+                                if(strlen($value1['title']) >=26)
+                                {
+                                    echo substr(ucfirst($value1['title']), 0,26);
+                                }
+                                else
+                                {
+                                    echo ucfirst($value1['title']);
+                                }
+                            ?>
+                        </span>
+                    </h2>
+                    <p>
+                        <?php
+                            $s = strlen($value1['description']);
+                            if($s >= 180)
+                            {
+                                echo substr(ucfirst($value1['description']), 0,180);
+                            }
+                            else
+                            {
+                                echo ucfirst($value1['description']);
+                            }
+                        ?>
+                    </p>
+                    <div class="da-img"><center><img src="/images/slider/<?php echo $value1['image'];?>" alt="image01" style=""/></center></div>
+                </div>
+        <div class="da-arrows">
+            <span class="da-arrows-prev"></span>
+            <span class="da-arrows-next"></span>        
+        </div>
+      <?php
+    }
+    ?>
+    </div>
+  </div>
+<!-- Slider ends -->
+
+<!-- seperation starts -->
+<div class="sep"></div>
+<!-- seperation starts -->
+
+<!--content starts -->
+<div class="content blog">
+  <div class="container">
+    <div class="row">
+        
+      <!-- first column starts -->
+      <div class="col-md-3">
+            <!-- about us -->
+            <?php
+
+                foreach ($listPagesDatas as $key => $value)
+                {
+                    $dis[]= $value['description'];
+                    $tit[]= $value['title'];
+                    $url[]= $value['url'];
+                }
+                ?>
+            <h4 class="br-orange"><i class="icon icon-user"></i><?php echo $tit['1'];?></h4>
+            <div class="widget1">
+                <p>
+                    <?php
+                    if($dis[1] != '')
+                    {
+                      echo substr($dis[1], 0,217).'.....';
+                    }
+                    else
+                    {
+                      echo "No datea added Here........";
+                    }
+                    ?>
+                    <br>
+                    <a href="contacts/aboutUs"><span class="pull-right">Read more →</span></a>
+                    <div class="clearfix"></div>
+                </p>
+            </div>
+            <!-- about us -->
+            
+            <!-- contact us -->
+            <?php
+            foreach ($listContactusDatas as $key => $value)
+            {
+                $title[]= $value['title'];
+                $discr[]= $value['description'];
+                $country[]= $value['country'];
+                $phone[]= $value['phone'];
+                $service[]= $value['service_email'];
+            }
+            ?>
+            <h4 class="br-orange"><i class="icon icon-phone"></i><?php echo $tit['0'];?></h4>            
+            <div class="widget1">
+                <div class="address">
+                    <address>
+                    <ul class="list-unstyled">
+                        <p><?php echo substr($discr['1'],0,50).'.';?></p><br>
+
+                        <li>
+                            <a href="contacts">
+                                <i class="icon-home"></i>
+                                <?php echo $country['1'];?>: <?php echo $phone['1'];?>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="mailto:<?php echo $url['1'];?>">
+                                <i class="icon-envelope-alt"></i>
+                                <?php echo $url['1'];?>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="contacts">
+                                <i class="icon-phone-sign"></i>
+                                <?php echo $country['2'];?>: <?php echo $phone['2'];?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contacts">
+                                <i class="icon-globe"></i>
+                                http://www.cooolwebsite.com
+                            </a>
+                        </li>
+                    </ul>
+                    </address>
+                </div>
+            </div>
+            <!-- contact us -->
+                
+            <!-- help us -->
+            <h4 class="br-orange"><i class="icon icon-cog"></i> Need Some Help</h4>
+            <div class="widget1">
+                <img src="images/photos/Help-icon.png" class="pull-left"><p>We create a website for your needs at a good price. <br><br></p>
+            </div>
+        </div>
+        <!-- first column ends -->
+        
+        <!-- second column starts -->
+        <div class="col-md-9">
+          <h3>Our Products</h3>
+
+                <!-- row ends -->
+                <div class="row">
+
+                     <!-- Item #1 -->
+                     <?php
+                        //echo count($listSmallPackages1); exit;
+                        if(count($listSmallPackages1) != '')
+                        {
+                            foreach ($listSmallPackages1 as $key => $value3)
+                            {
+                            ?>
+                           <div class="col-md-4 col-sm-4">
+                               <div class="item1">
+                                  <!-- Item image -->
+                                  <div class="item-image">
+                                      <a href=""><img src="/images/products/small_package/<?php echo $value3['image2'];?>" alt="" class="img-responsive" /></a>
+                                  </div>
+                                  <!-- Item image -->
+                                  
+                                  <!-- Item details -->
+                                  <div class="item-details">
+                                    <h5><a href=""><?php echo $value3['product_title'];?></a></h5>
+                                    <p><?php
+                                            $s = strlen($value3['description']);
+                                            if($s >= 50)
+                                            {
+                                                echo substr(ucfirst($value3['description']), 0,50)."...";
+                                            }
+                                            else
+                                            {
+                                              echo ucfirst($value3['description'])."...";
+                                            }
+                                        ?></p>
+                                    <hr />
+                                    <!-- read more -->
+                                    <div class="button pull-right"><a href="/productDetails/<?php echo $value3['id'];?>">Read More</a></div>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <!-- Item details -->
+                              </div>
+                          </div>
+                        <?php
+                            }
+                        }
+                        else if(count($listSmallPackages2) != '')
+                        {                  
+                            foreach ($listSmallPackages2 as $key => $value4)
+                            {
+                              ?>
+                              <div class="col-md-4 col-sm-4">
+                               <div class="item1">
+                                  <!-- Item image -->
+                                  <div class="item-image">
+                                      <a href=""><img src="/images/products/small_package/<?php echo $value4['image2'];?>" alt="" class="img-responsive" /></a>
+                                  </div>
+                                  <!-- Item image -->
+                                  
+                                  <!-- Item details -->
+                                  <div class="item-details">
+                                    <h5><a href=""><?php echo $value4['product_title'];?></a></h5>
+                                    <p><?php
+                                            $s = strlen($value4['description']);
+                                            if($s >= 50)
+                                            {
+                                                echo substr(ucfirst($value4['description']), 0,50)."...";
+                                            }
+                                            else
+                                            {
+                                              echo ucfirst($value4['description'])."...";
+                                            }
+                                        ?>  </p>
+                                    <hr />
+                                    <!-- read more -->
+                                    <div class="button pull-right"><a href="/productDetails/<?php echo $value4['id'];?>">Read More</a></div>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <!-- Item details -->
+                              </div>
+                          </div>
+                        
+                    <!-- Item #1 -->
+                </div>
+                <!-- row ends -->
+            </div>
+            <?php
+                                }
+                        }
+                        else if(count($listAllAdminSmallPackage) != '')
+                        {                  
+                            foreach ($listAllAdminSmallPackage as $key => $value444)
+                            {
+                                
+                                    ?>
+                                     <div class="col-md-4 col-sm-4">
+                               <div class="item1">
+                                  <!-- Item image -->
+                                  <div class="item-image">
+                                      <a href=""><img src="/images/products/small_package/<?php echo $value444['image2'];?>" alt="" class="img-responsive" /></a>
+                                  </div>
+                                  <!-- Item image -->
+                                  
+                                  <!-- Item details -->
+                                  <div class="item-details">
+                                    <h5><a href=""><?php echo $value444['product_title'];?></a></h5>
+                                    <p><?php
+                                            $s = strlen($value444['description']);
+                                            if($s >= 50)
+                                            {
+                                                echo substr(ucfirst($value444['description']), 0,50)."...";
+                                            }
+                                            else
+                                            {
+                                              echo ucfirst($value444['description'])."...";
+                                            }
+                                        ?>  </p>
+                                    <hr />
+                                    <!-- read more -->
+                                    <div class="button pull-right"><a href="/productDetails/<?php echo $value444['id'];?>">Read More</a></div>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <!-- Item details -->
+                              </div>
+                          </div>
+                        <?php
+                      }
+                      }?>
+                    <!-- Item #1 -->
+                </div>
+                <!-- row ends -->
+            </div>
+            <!-- second column ends -->
+      </div>
+      <!-- row ends -->
+    </div>
+    <!--container ends -->
+</div>
+<!--content ends -->    
