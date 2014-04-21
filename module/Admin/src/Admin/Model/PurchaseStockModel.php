@@ -10,11 +10,13 @@ use Zend\InputFilter\InputFilterInterface;
 class PurchaseStockModel implements InputFilterAwareInterface
 {
 	public $id;
-	public $item;
+	public $itemId;
 	public $quantity;
         public $cumilativeStock;
 	public $purchaseStock;
         public $purchaseRate;
+        public $sale;
+        public $sustainStock;
         public $expiryDate;
         public $unitRate;
         public $status;
@@ -29,9 +31,9 @@ class PurchaseStockModel implements InputFilterAwareInterface
 	{
 	    $this->id = $id;				
 	}
-	public function setItem($item)
+	public function setItemId($itemId)
 	{
-	    $this->item = $item;				
+	    $this->itemId = $itemId;				
 	}
 	public function setCumilativeStock($cumilativeStock)
 	{
@@ -41,6 +43,14 @@ class PurchaseStockModel implements InputFilterAwareInterface
         public function setPurchaseStock($purchaseStock)
         {
             $this->purchaseStock= $purchaseStock;
+        }
+        public function setSale($sale)
+        {
+            $this->sale= $sale;
+        }
+        public function setSustainStock($purchaseStock)
+        {
+            $this->sustainStock= $sustainStock;
         }
         public function setPurchaseRate($purchaseRate)
         {

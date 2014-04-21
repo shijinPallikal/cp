@@ -280,14 +280,17 @@ class IngredientController extends AbstractActionController
             return $this->redirect()->toRoute('admin');
         }
     }
-    public function getPrizeAction() 
+    public function prizeAction() 
     {
         if ($this->getAuthService()->hasIdentity())
         {
             $quantity= $_POST['quan'];
             $materialId= $_POST['matId'];
-           // 'prize' => $this->getProductRowmaterialTable()->getItemPrize($quantity,$materialId),
-           
+            $prize= $this->getPurchaseStockTable()->getItemPrize($materialId,$quantity);
+            //print_r($prize);exit;
+            $itemRate= $prize['prate']/$prize['pstock'];
+            $quantityRate= $quantity * $itemRate;
+            echo $quantityRate;exit;
         }
         else
         {

@@ -1,43 +1,59 @@
 <script type="text/javascript">
+    jQuery(function($){
     //Status off
-    $('.ston').live('click',function()
-    {
-        var offId = $(this).attr('id'); 
-        
-        $.ajax({
-            type:"POST",
-            url:"/admin/rowmaterial/statusOff",
-            cache:false,
-            data:{ offId:offId },
-            dataType:"html",
-            success:function(data)
-            {
-                $("#msg").html(data);
-                location.reload();
-            }
+        $('.ston').live('click',function()
+        {
+            var offId = $(this).attr('id'); 
+
+            $.ajax({
+                type:"POST",
+                url:"/admin/rowmaterial/statusOff",
+                cache:false,
+                data:{ offId:offId },
+                dataType:"html",
+                success:function(data)
+                {
+                    $("#msg").html(data);
+                    location.reload();
+                }
+            });
+
         });
 
-    });
+        //Status On
+        $('.stof').live('click',function()
+        {
+            var onId = $(this).attr('id'); 
 
-    //Status On
-    $('.stof').live('click',function()
-    {
-        var onId = $(this).attr('id'); 
-        
-        $.ajax({
-            type:"POST",
-            url:"/admin/rowmaterial/statusOn",
-            cache:false,
-            data:{ onId:onId },
-            dataType:"html",
-            success:function(data)
-            {
-                $("#msg").html(data);
-                location.reload();
-                
-            }
+            $.ajax({
+                type:"POST",
+                url:"/admin/rowmaterial/statusOn",
+                cache:false,
+                data:{ onId:onId },
+                dataType:"html",
+                success:function(data)
+                {
+                    $("#msg").html(data);
+                    location.reload();
+
+                }
+            });
+
         });
-
+        $('#rowmaterial').change(function()
+        {
+            var material= $('#rowmaterial').val();
+            $.ajax({
+                type: "POST",
+                url : "/admin/rowmaterial/findMaterial",
+                cashe : false,
+                data : {material:material},
+                dataType: 'html',
+                success: function (data) {
+                    $('#search').html(data);
+                }
+            });
+        });
     });
 </script>
 <div class="span9" id="content">
@@ -87,6 +103,7 @@
                                     <div class="controls">
                                         <input type="text" name="rowmaterial" id="rowmaterial" class="span6" required>
                                     </div>
+                                    <div id="search" class="controls"></div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">Rowmateril Code</label>
@@ -94,7 +111,7 @@
                                         <input type="text" name="code" id="code" class="span6" required >
                                     </div>
                                 </div>
-                                <?php /*<div class="control-group">
+                                <div class="control-group">
                                     <label class="control-label" for="typeahead">Unit Of Measure </label>
                                     <div class="controls">
                                         <select id="uom" name="uom" required>
@@ -107,7 +124,7 @@
                                             ?>
                                         </select>
                                     </div>
-                                </div>*/?>
+                                </div>
 
                                 <div class="form-actions">
                                     <button type="submit" name="submit" class="btn btn-primary">Save</button>
@@ -198,7 +215,7 @@
 <script type="text/javascript">
     $("#cancel").click(function()
     {
-        window.location.href= "<?php echo $this->basePath()?>/admin/category/add";
+        window.location.href= "<?php echo $this->basePath()?>/admin/rowmaterial/add";
     });
 
 </script>

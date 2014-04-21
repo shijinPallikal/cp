@@ -129,5 +129,6 @@ class ProductRowmaterialTable extends AbstractTableGateway
         $statement= $this->adapter->query($sql);
         $result= $statement->execute();
         return $result;
-    }
+    }   
+    
 }

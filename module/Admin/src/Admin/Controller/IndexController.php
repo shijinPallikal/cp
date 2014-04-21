@@ -17,24 +17,12 @@ use Zend\Session\Container;
 use Admin\Model\LoginModel;
 use Admin\Model\LoginTable;
 
-<<<<<<< HEAD
-=======
-use Admin\Model\LanguagesModel;
-use Admin\Model\LanguagesTable;
-
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
-
 class IndexController extends AbstractActionController
 {
 
     protected $authservice;
     protected $loginTable;
-<<<<<<< HEAD
-    
-=======
-    protected $languagesTable;
 
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
     public function getAuthService()
     {
         if (! $this->authservice)
@@ -54,20 +42,6 @@ class IndexController extends AbstractActionController
         return $this->loginTable;
     }
 
-<<<<<<< HEAD
-=======
-    public function getLanguagesTable()
-    {
-        if(!$this->languagesTable)
-        {
-            $sm= $this->getServiceLocator();
-            $this->languagesTable = $sm->get('Admin\Model\LanguagesTable'); 
-        }
-        return $this->languagesTable;
-    }
-
-
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
     //Actions
     public function indexAction()
     {
@@ -94,13 +68,9 @@ class IndexController extends AbstractActionController
                 if ($result->isValid())
                 {     
                     $adminUserResult = $this->getLoginTable()->getUserDetails($request->getPost('username'), $request->getPost('password'));
-     
+                    
                     $adminUser = $adminUserResult->current();
-<<<<<<< HEAD
-                                            
-=======
-                        
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
+                    
                     $session = new Container('user');
                     $session->offsetSet('userId',     $adminUser['id']);
                     $session->offsetSet('userName', $adminUser['username']);
@@ -109,20 +79,7 @@ class IndexController extends AbstractActionController
                     $userName = $session->offsetGet('userName');
                     $userStatus = $session->offsetGet('userStatus');
                     $ip       = $_SERVER['REMOTE_ADDR'];
-<<<<<<< HEAD
-                                                                     
-=======
-                                 
 
-                    //Language into Session
-                    $adminLanguageSession = $this->getLanguagesTable()->listLanguagesSessionDatas();
-                    
-                    $adminLanguage = $adminLanguageSession->current();
-                    $session = new Container('language');
-                    $session->offsetSet('languageId',     $adminLanguage['id']);
-                    $languageId   = $session->offsetGet('languageId');
-                                    
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
                     $this->getLoginTable()->updateUserLogin($userId,$ip);
                     if($userStatus == 1)
                     {
@@ -156,20 +113,9 @@ class IndexController extends AbstractActionController
         {
             if ($this->getAuthService()->hasIdentity())
             { 
-<<<<<<< HEAD
-                $this->layout('layout/adminDashboardLayout'); 
-=======
-                $session = new Container('language');
-                $languageId   = $session->offsetGet('languageId');
-                
+
                 $this->layout('layout/adminDashboardLayout');
-                $this->layout()->setVariables(array('languageId' => $languageId));
-                
-                $viewModel= new ViewModel(array(
-                    'languagesDatas' => $this->getLanguagesTable()->listLanguagesDatas(),
-                ));
-                return $viewModel;   
->>>>>>> b60ac5dd7ec26292fc860def11b1b5e8d59241ae
+               
             }
             else
             {

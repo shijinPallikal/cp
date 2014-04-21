@@ -77,7 +77,7 @@ class RowmaterialTable extends AbstractTableGateway
          $sql= "select tbl_row_material.id,tbl_row_material.*,tbl_uom.uom,tbl_category.category from tbl_row_material inner join tbl_category on "
                . "tbl_row_material.category_id=tbl_category.id inner join tbl_uom on "
                . "tbl_row_material.uom=tbl_uom.id order by tbl_row_material.id desc";
-        // echo $sql; exit;
+        //echo $sql; exit;
         $statement = $this->adapter->query($sql);
         $result = $statement->execute();
         return $result;
@@ -124,6 +124,23 @@ class RowmaterialTable extends AbstractTableGateway
         $sql= "select * from tbl_row_material where status= 1";
         $statement= $this->adapter->query($sql);
         $result= $statement->execute();
+        return $result;
+    }
+    public function getUom($mid)
+    {
+        $sql="selecmidt tbl_uom.uom,tbl_row_material.uom as uid from tbl_row_material inner"
+                . " join tbl_uom on tbl_row_material.uom= tbl_uom.id where tbl_row_material.id='$mid'";
+        $statement = $this->adapter->query($sql);           
+        $result = $statement->execute();
+        $result= $result->current();
+        return $result; 
+    }
+    public function findMaterial($material)
+    {
+        $sql="select count(item) as it from tbl_row_material where item= '$material'";
+        $statement = $this->adapter->query($sql);           
+        $result = $statement->execute();
+        $result= $result->current();
         return $result;
     }
 }

@@ -1,15 +1,9 @@
 <?php
-
 return array(
-    
-    'defaultValues' => array(
-        'upload_path'=>'/var/www/coool/public',
-        ),
-    
     'router' => array(
         'routes' => array(
-            
-                    
+
+                       
  /* ------------------------------------------------------------------------------------------------------------------------------------------ */                   
  /* ------------------------------------------------- Adminpanel Controller ------------------------------------------------------------------------ */
  /* ------------------------------------------------------------------------------------------------------------------------------------------ */        
@@ -499,7 +493,7 @@ return array(
                             ),
                 
                             
-                            /*category Add Action */
+                            /*Rowmaterial Add Action */
                             'add' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -513,9 +507,9 @@ return array(
                                     )
                                 )
                             ),
-                            /* category Add Action End */
+                            /* Rowmaterial Add Action End */
 
-                             /*category Delete Action */
+                             /*Rowmaterial Delete Action */
                             'delete' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -528,10 +522,10 @@ return array(
                                     )
                                 )
                             ),
-                            /* category Delete Action End */
+                            /* Rowmaterial Delete Action End */
 
 
-                            /*category ajaxlist Action */
+                            /*Rowmaterial ajaxlist Action */
                             'ajaxList' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -544,9 +538,9 @@ return array(
                                     )
                                 )
                             ),
-                            /* category ajaxlist Action End */
+                            /* Rowmaterial ajaxlist Action End */
 
-                            /*category status Action */
+                            /*Rowmaterial status Action */
                             'statusOn' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -573,9 +567,9 @@ return array(
                                 )
                             ),
                             
-                            /* category status Action End */
+                            /* Rowmaterial status Action End */
 
-                            /*category Edit Action */
+                            /*Rowmaterial Edit Action */
                             'edit' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -588,7 +582,22 @@ return array(
                                     )
                                 )
                             ),
-                            /* category edit Action End */
+                            /* Rowmaterial edit Action End */
+                               
+                            /*Rowmaterial findMaterial Action */
+                            'findMaterial' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/findMaterial',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'findMaterial'
+                                    )
+                                )
+                            ),
+                            /* Rowmaterial findMaterial Action End */
 
                             
                         )
@@ -627,7 +636,7 @@ return array(
                             ),
                 
                             
-                            /*category Add Action */
+                            /*Purchase Add Action */
                             'add' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -641,9 +650,9 @@ return array(
                                     )
                                 )
                             ),
-                            /* category Add Action End */
+                            /* Purchase Add Action End */
 
-                             /*category Delete Action */
+                             /*Purchase Delete Action */
                             'delete' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -656,10 +665,10 @@ return array(
                                     )
                                 )
                             ),
-                            /* category Delete Action End */
+                            /* Purchase Delete Action End */
 
 
-                            /*category ajaxlist Action */
+                            /*Purchase ajaxlist Action */
                             'ajaxList' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -672,9 +681,9 @@ return array(
                                     )
                                 )
                             ),
-                            /* category ajaxlist Action End */
+                            /* Purchase ajaxlist Action End */
 
-                            /*category status Action */
+                            /*Purchase status Action */
                             'statusOn' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -701,9 +710,9 @@ return array(
                                 )
                             ),
                             
-                            /* category status Action End */
+                            /* Purchase status Action End */
 
-                            /*category Edit Action */
+                            /*Purchase Edit Action */
                             'edit' => array(
                                 'type' => 'segment',
                                 'options' => array(
@@ -716,8 +725,22 @@ return array(
                                     )
                                 )
                             ),
-                            /* category edit Action End */
-
+                            /* Purchase edit Action End */
+                            
+                             /*Purchase Unit of Measure Action */
+                            'uom' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                   'route' => '/uom',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',                                       
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'uom'
+                                    )
+                                )
+                            ),
+                            /* Purchase edit Action End */
                             
                         )
                     ),
@@ -862,15 +885,15 @@ return array(
                             /* Ingredient edit Action End */
                             
                             /*Ingredient Edit Action */
-                            'getPrize' => array(
+                            'prize' => array(
                                 'type' => 'segment',
                                 'options' => array(
-                                   'route' => '/getPrize',
+                                   'route' => '/prize',
                                     'constraints' => array(
                                         'id' => '[0-9]+',                                       
                                     ),
                                     'defaults' => array(
-                                        'action' => 'getPrize'
+                                        'action' => 'prize'
                                     )
                                 )
                             ),
@@ -1061,6 +1084,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'Admin\Controller\Category' => 'Admin\Controller\CategoryController',
             'Admin\Controller\Uom' => 'Admin\Controller\UomController',
             'Admin\Controller\Menu' => 'Admin\Controller\MenuController',

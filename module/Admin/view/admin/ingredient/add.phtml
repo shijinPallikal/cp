@@ -80,17 +80,19 @@
     
     function getQuantity(val)
     {
+        //alert(val);
         var quan= val;
         var matId=  $('#hid').val();
-        //alert()
+        //alert(matId);
+        //alert(quan);
         $.ajax({
             type: "POST",
-            url : "/admin/ingredient/getPrize",
+            url : "/admin/ingredient/prize",
             cashe : false,
             data : { matId:matId, quan:quan},
             dataType: 'html',
             success: function (data) {
-                alert(data);
+                $('#rate').val(data);
             }
         });
     }

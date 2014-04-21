@@ -199,7 +199,7 @@ class RowmaterialController extends AbstractActionController
                 $rowmaterial->setCategoryId($request->getPost('category'));
                 $rowmaterial->setItem($request->getPost('rowmaterial'));
                 $rowmaterial->setItemCode($request->getPost('code'));
-                $rowmaterial->setUom($request->getPost('uom'));
+                $rowmaterial->setUom($request->getPost('uomHid'));
                 $rowmaterial->setUpdatedOn(date('Y-m-d H:i:s'));
                 $rowmaterial->setCreatedBy($userId);
                 $this->getRowmaterialTable()->updateDatas($rowmaterial);
@@ -225,5 +225,28 @@ class RowmaterialController extends AbstractActionController
         }
         
     }
+    public function findMaterialAction()
+    {
+        if($this->getAuthService()->hasIdentity())
+        {
+            if($_POST['material'] != '')
+            {
+                $status= $this->getRowmaterialTable()->findMaterial($_POST['material']);
+                if($status['it'] == '1')
+                {
+                    echo "Material is already Added...";exit;
+                }
+                exit;
+            }           
+            
+        }
+        else
+        {
+            $this->flashMessenger()->addMessage("Please Login");
+            return $this->redirect()->toRoute("admin");
+        }
+        
+    }
+    
 }
 

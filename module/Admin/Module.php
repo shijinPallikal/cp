@@ -88,12 +88,11 @@ class Module
                 'AdminAuth' => function($sm)
                 {
                     $dbAdapter           = $sm->get('Zend\Db\Adapter\Adapter');     
-                    $dbTableAuthAdapter  = new DbTableAuthAdapter($dbAdapter, 'login','username','password', 'MD5(?)');  
+                    $dbTableAuthAdapter  = new DbTableAuthAdapter($dbAdapter, 'login','username','password', 'MD5(?)');
                     $authService = new AuthenticationService();     
                     $authService->setAdapter($dbTableAuthAdapter);      
-                    //$authService->setStorage($sm->get('Album\Model\MyAuthStorage'));
                     return $authService;
-		}
+		},
                 'Admin\Model\CategoryTable' => function($sm)
                 {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');

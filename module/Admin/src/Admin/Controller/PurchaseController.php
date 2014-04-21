@@ -105,16 +105,37 @@ class PurchaseController extends AbstractActionController
                 $purchase= new PurchaseModel();
                 $purchaseStock= new PurchaseStockModel();
                 
+                //Purchase Date
+                if($request->getPost('pdate') != '')
+                {
+                    $input_date= $request->getPost('pdate');
+                    $month = substr($input_date,3,2);
+                    $day = substr($input_date,0,2);
+                    $year = substr($input_date,6,4);                            
+                    $pdate = $year.'-'.$month.'-'.$day;
+                }
+                
+                //Expiry Date
+                if($request->getPost('expdate') != '')
+                {
+                    $input_eDate= $request->getPost('expdate');
+                    $eMonth = substr($input_eDate,3,2);
+                    $eDay = substr($input_eDate,0,2);
+                    $eYear = substr($input_eDate,6,4);                            
+                    $expdate = $eYear.'-'.$eMonth.'-'.$eDay;
+                }
+                
                 //Current User Id from Session
                 $session = new Container('user'); 
                 $userId = $session->offsetGet('userId');
-        	$unitRate= $request->getPost('prate') /  $request->getPost('quantity');                             
+                
+        	$unitRate= $request->getPost('prate') /  $request->getPost('quantity'); 
                 $purchase->setItem($request->getPost('item'));
                 $purchase->setQuantity($request->getPost('quantity'));
                 $purchase->setPurchaseRate($request->getPost('prate'));
-                $purchase->setPurchaseDate($request->getPost('pdate'));
-                $purchase->setExpiryDate($request->getPost('expdate'));
-                $purchase->setMeashure($request->getPost('uom'));
+                $purchase->setPurchaseDate($pdate);
+                $purchase->setExpiryDate($expdate);
+                $purchase->setMeashure($request->getPost('uomHid'));
                 $purchase->setUnitRate($unitRate);
                 $purchase->setStatus('1');
                 $purchase->setCreatedOn(date('Y-m-d H:i:s'));
@@ -129,14 +150,17 @@ class PurchaseController extends AbstractActionController
                 
                 $netCumilativeStock= $cumilativeStock+$request->getPost('quantity');
                 
-                $purchaseStock->setItem($request->getPost('item'));
+                $purchaseStock->setItemId($request->getPost('item'));
                 $purchaseStock->setPurchaseStock($request->getPost('quantity'));
                 $purchaseStock->setCumilativeStock($netCumilativeStock);
                 $purchaseStock->setPurchaseRate($request->getPost('prate'));
-                $purchaseStock->setPurchaseDate($request->getPost('pdate'));
-                $purchaseStock->setExpiryDate($request->getPost('expdate'));
+                $purchaseStock->setPurchaseDate($pdate);
+                $purchaseStock->setExpiryDate($expdate);
                 $purchaseStock->setUnitRate($unitRate);
                 $purchaseStock->setStatus('1');
+                $purchaseStock->setCreatedOn(date('Y-m-d H:i:s'));
+                $purchaseStock->setUpdatedOn(date('Y-m-d H:i:s'));
+                $purchaseStock->setCreatedBy($userId);
                 $this->getPurchaseStockTable()->insertStock($purchaseStock);
                 
             }
@@ -170,6 +194,7 @@ class PurchaseController extends AbstractActionController
             $request= $this->getRequest();
             if($request->isPost())
             {
+                echo$request->getPost('uomHid'); exit;
                 $purchase= new PurchaseModel();
                 
                 //Current User Id from Session
@@ -182,7 +207,7 @@ class PurchaseController extends AbstractActionController
                 $purchase->setPurchaseRate($request->getPost('prate'));
                 $purchase->setPurchaseDate($request->getPost('pdate'));
                 $purchase->setExpiryDate($request->getPost('expdate'));
-                $purchase->setMeashure($request->getPost('uom'));
+                $purchase->setMeashure($request->getPost('uomHid'));
                 $purchase->setUpdatedOn(date('Y-m-d H:i:s'));
                 $purchase->setCreatedBy($userId);
                 $this->getPurchaseTable()->updateData($purchase);
@@ -248,6 +273,22 @@ class PurchaseController extends AbstractActionController
                     echo "You can't Change Status....";exit;
                 }
             }
+        }
+        else
+        {
+            $this->flashmessenger()->addMessage("Please login...");
+            return $this->redirect()->toRoute('admin');
+        }
+        
+    }
+    public function uomAction()
+    {
+        if ($this->getAuthService()->hasIdentity())
+        {
+            $mid= $_POST['mid'];
+            $unitOfMeasure= $this->getRowmaterialTable()->getUom($mid);
+            echo $unitOfMeasure['uom']._.$unitOfMeasure['uid']; exit;
+          
         }
         else
         {

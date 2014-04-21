@@ -75,6 +75,23 @@
             }
         });
         
+        $('#item').change(function(){
+            var mid= $('#item').val();
+            $.ajax({
+                type: "POST",
+                url : "/admin/purchase/uom",
+                cashe : false,
+                data : {mid:mid},
+                dataType: 'html',
+                success: function (data) {
+                    var d= data.split('_');
+                    $('#uom').val(d[0]);
+                    $('#uomHid').val(d[1]);
+                }
+            });
+        
+        });
+        
 
    
     });
@@ -128,6 +145,13 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label" for="typeahead">Uom</label>
+                                    <div class="controls">
+                                        <input type="text" name="uom" id="uom" class="span6" required>
+                                        <input type="hidden" name="uomHid" id="uomHid" class="span6">
+                                    </div>
+                                </div>
+                                <?php /*<div class="control-group">
                                     <label class="control-label" for="typeahead">Unit Of Measure </label>
                                     <div class="controls">
                                         <select id="uom" name="uom" required>
@@ -140,7 +164,7 @@
                                             ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div>*/?>
                                 <div class="control-group">
                                     <label class="control-label" for="typeahead">Purchase Rate</label>
                                     <div class="controls">
@@ -177,7 +201,7 @@
                                     <th>Id</th>
                                     <th>Item</th>
                                     <th>Quantity</th>
-                                    <th>UOM</th>
+                                    <th>Uom</th>
                                     <th>Pur-Rate</th>
                                     <th>Pur-date</th>
                                     <th>Exp-Date</th>
@@ -196,7 +220,7 @@
                                 <td><?php echo $value['id'];?></td>
                                 <td><?php echo $value['item']; ?></td>
                                 <td><?php echo $value['quantity']; ?></td>
-                                <td><?php echo $value['uom']; ?></td>
+                                <td><?php echo $value['uom']; ?></td>                                
                                 <td><?php echo $value['purchase_rate']; ?></td>
                                 <td><?php echo $value['purchase_date']; ?></td>
                                 <td><?php echo $value['exp_date']; ?></td>

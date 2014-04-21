@@ -78,6 +78,9 @@ class PurchaseTable extends AbstractTableGateway
         $sql="select tbl_purchase.*,tbl_row_material.item,tbl_uom.uom from tbl_purchase inner"
                 . " join tbl_row_material on tbl_purchase.item=tbl_row_material.id "
                 . "inner join tbl_uom on tbl_purchase.meashure= tbl_uom.id order by tbl_purchase.id desc";
+        /*$sql="select tbl_purchase.*,tbl_row_material.item from tbl_purchase inner"
+                . " join tbl_row_material on tbl_purchase.item=tbl_row_material.id "
+                . "order by tbl_purchase.id desc";*/
         //echo $sql;exit;
         $statement = $this->adapter->query($sql);           
         $result = $statement->execute(); 
@@ -86,8 +89,11 @@ class PurchaseTable extends AbstractTableGateway
 
     public function editData($id)
     {
-        $sql="select tbl_purchase.*,tbl_row_material.item from tbl_purchase inner join tbl_row_material on tbl_purchase.item=tbl_row_material.id where tbl_purchase.id= $id";
+        //$sql="select tbl_purchase.*,tbl_row_material.item from tbl_purchase inner join tbl_row_material on tbl_purchase.item=tbl_row_material.id where tbl_purchase.id= $id";
         //$statement = $this->adapter->query("call editPurchase('".$id."')");
+        $sql="select tbl_purchase.*,tbl_row_material.item,tbl_uom.uom from tbl_purchase inner"
+                . " join tbl_row_material on tbl_purchase.item=tbl_row_material.id "
+                . " inner join tbl_uom on tbl_purchase.meashure= tbl_uom.id where tbl_purchase.id=$id";
         $statement = $this->adapter->query($sql);
         $result = $statement->execute();
         return $result; 
