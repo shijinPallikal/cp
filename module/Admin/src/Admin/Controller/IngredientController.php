@@ -122,18 +122,10 @@ class IngredientController extends AbstractActionController
             $request= $this->getRequest();
             if($request->isPost())
             {
-                $category= new CategoryModel();
-                
-                //Current User Id from Session
-                $session = new Container('user'); 
-                $userId = $session->offsetGet('userId');
-        	                                
-                $category->setCode($request->getPost('category_alias'));
-                $category->setCategory($request->getPost('category'));
-                $category->setCreatedOn(date('Y-m-d H:i:s'));
-                $category->setUpdatedOn(date('Y-m-d H:i:s'));
-                $category->setCreatedBy($userId);
-                $this->getCategoryTable()->inserts($category);
+                if(!empty($postData['email'][0]))
+    		{
+    			//echo "haii";exit;
+                }
             }
             $page = (int) $this->params()->fromRoute('page', 1);
             $iteratorAdapter = new \Zend\Paginator\Adapter\ArrayAdapter(iterator_to_array($this->getProductRowmaterialTable()->fetchAll()));
@@ -249,13 +241,16 @@ class IngredientController extends AbstractActionController
     {
         if ($this->getAuthService()->hasIdentity())
         {
-            //exit("iam here");
-            $viewModel = new ViewModel(array(
-                'rowmaterial' => $this->getRowmaterialTable()->getAllRowmaterial(),
-                'uom' => $this->getUomTable()->fetchAllUomStatusOn(),
-            ));
-            $viewModel->setTerminal(true);
-            return $viewModel;
+            if($_POST['cnt'] != '')
+            {
+                $viewModel = new ViewModel(array(
+                    'rowmaterial' => $this->getRowmaterialTable()->getAllRowmaterial(),
+                    'uom' => $this->getUomTable()->fetchAllUomStatusOn(),
+                    'count' => $_POST['cnt']
+                ));
+                $viewModel->setTerminal(true);
+                return $viewModel;
+            }
         }
         else
         {
@@ -269,9 +264,10 @@ class IngredientController extends AbstractActionController
         if ($this->getAuthService()->hasIdentity())
         {
             $mid= $_POST['mid'];
+            $pressCount=$_POST['prsCount'];
           
                 $unitOfMeasure= $this->getPurchaseTable()->getUom($mid);
-                echo $unitOfMeasure['uom']; exit;
+                echo $unitOfMeasure['uom'].'_'.$pressCount;exit;
           
         }
         else
@@ -286,11 +282,12 @@ class IngredientController extends AbstractActionController
         {
             $quantity= $_POST['quan'];
             $materialId= $_POST['matId'];
+            $pressCount=$_POST['prsCount'];
             $prize= $this->getPurchaseStockTable()->getItemPrize($materialId,$quantity);
-            //print_r($prize);exit;
+            
             $itemRate= $prize['prate']/$prize['pstock'];
-            $quantityRate= $quantity * $itemRate;
-            echo $quantityRate;exit;
+            $quantityRate= round(($quantity * $itemRate), 2);
+            echo $quantityRate.'_'.$pressCount;exit;
         }
         else
         {

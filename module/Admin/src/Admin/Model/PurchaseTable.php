@@ -129,8 +129,8 @@ class PurchaseTable extends AbstractTableGateway
     }
     public function getUom($mid)
     {
-        $sql="select tbl_uom.uom from tbl_purchase inner"
-                . " join tbl_uom on tbl_purchase.meashure= tbl_uom.id where tbl_purchase.item='$mid'";
+        $sql="select tbl_uom.uom from tbl_row_material inner"
+                . " join tbl_uom on tbl_row_material.uom= tbl_uom.id where tbl_row_material.id='$mid'";
         $statement = $this->adapter->query($sql);           
         $result = $statement->execute();
         $result= $result->current();

@@ -1,52 +1,14 @@
 <script type="text/javascript">
-    //Status off
-    $('.ston').live('click',function()
+    var i=1;
+    function increase()
     {
-        var offId = $(this).attr('id'); 
-        
-        $.ajax({
-            type:"POST",
-            url:"/admin/rowmaterial/statusOff",
-            cache:false,
-            data:{ offId:offId },
-            dataType:"html",
-            success:function(data)
-            {
-                $("#msg").html(data);
-                location.reload();
-            }
-        });
-
-    });
-
-    //Status On
-    $('.stof').live('click',function()
-    {
-        var onId = $(this).attr('id'); 
-        
-        $.ajax({
-            type:"POST",
-            url:"/admin/rowmaterial/statusOn",
-            cache:false,
-            data:{ onId:onId },
-            dataType:"html",
-            success:function(data)
-            {
-                $("#msg").html(data);
-                location.reload();
-                
-            }
-        });
-
-    });
-    
-    
-    $('#plus').live('click',function()
-    {
+	var cnt= i++;
+        $('#cnt').val(cnt);
         $.ajax({
             type:"POST",
             url:"/admin/ingredient/ajaxTable",
             cache:false,
+            data: { cnt:cnt },
             dataType:"html",
             success:function(data)
             {
@@ -54,25 +16,30 @@
             }
         });
 
-    });
-    
-    $('#close').live('click',function()
+    }   
+    $('.cls').live('click',function()
     {
-        alert("haii");
-        $("#cp").hide();
+        var id= $(this).attr('id');
+        var delId= id.split('_');
+        $("#cp"+delId[1]).hide();
     });
     function getMaterialId(materialId)
     {
         var mid= materialId;
+        var prsCount= $('#cnt').val();
+        $('#material').val(mid);
+                
         $('#hid').val(mid);
         $.ajax({
             type: "POST",
             url : "/admin/ingredient/uom",
             cashe : false,
-            data : {mid:mid},
+            data : {mid:mid,prsCount:prsCount},
             dataType: 'html',
-            success: function (data) {
-                $('#uom').val(data);
+            success: function (data)
+            {   
+                var cnt= data.split('_');
+                $('#uom'+cnt[1]).val(cnt[0]);
             }
         });
         
@@ -80,21 +47,30 @@
     
     function getQuantity(val)
     {
-        //alert(val);
-        var quan= val;
-        var matId=  $('#hid').val();
-        //alert(matId);
-        //alert(quan);
-        $.ajax({
-            type: "POST",
-            url : "/admin/ingredient/prize",
-            cashe : false,
-            data : { matId:matId, quan:quan},
-            dataType: 'html',
-            success: function (data) {
-                $('#rate').val(data);
-            }
-        });
+        var material= $('#material').val();
+        if(material == 0)
+        {
+            alert("Please select a row material");
+            $('#product').focus();
+        }
+        else
+        {
+            var quan= val;
+            var matId=  $('#hid').val();
+            var prsCount= $('#cnt').val();
+            $.ajax({
+                type: "POST",
+                url : "/admin/ingredient/prize",
+                cashe : false,
+                data : { matId:matId, quan:quan,prsCount:prsCount},
+                dataType: 'html',
+                success: function (data)
+                {
+                    var cnt= data.split('_');
+                    $('#rate'+cnt[1]).val(cnt[0]);
+                }
+            });
+        }
     }
     
     
@@ -128,9 +104,9 @@
                                 <legend>Form Components</legend>
                                
                                 <div class="control-group">
-                                    <label class="control-label" for="typeahead">Product </label>
+                                    <label class="control-label" for="typeahead">Product</label>
                                     <div class="controls">
-                                        <select id="category" name="category" required>
+                                        <select id="category" name="category" required autofocus>
                                             <option value="">Select Product</option>
                                             <?php 
                                             foreach ($products as $key => $value)
@@ -141,6 +117,8 @@
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" id="cnt">
+                                <input type="hidden" id="material">
                                 <div class="control-group">Ingredients</div>
                                 <div class="control-group">
                                     <div class="controls" style="margin-left: 0;">
@@ -155,7 +133,7 @@
                                 <div id="ajx_table"></div>
                                 <div class="control-group">
                                     <div class="controls" style="float:right;">
-                                        <img src="/images/plus.png" border="0" id="plus">
+                                        Add Rowmaterial<img src="/images/plus.png" title="Add Rowmaterial" border="0" id="plus" onclick="increase();">
                                     </div>
                                 </div>   
                                 
