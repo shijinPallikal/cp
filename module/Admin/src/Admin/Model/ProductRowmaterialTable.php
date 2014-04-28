@@ -57,16 +57,14 @@ class ProductRowmaterialTable extends AbstractTableGateway
         return $return;
     }
 	 
-    public function inserts(RowmaterialModel $obj)
+    public function inserts(ProductRowmaterialModel $obj)
     {  
         //print_r($obj);exit;
         $sql = new Sql($this->adapter);          
         $insert = $sql->insert($this->table);        
         $insert->values ($this->exchangeToArray($obj));
         $statement = $sql->prepareStatementForSqlObject($insert);          
-        $result = $statement->execute();                    
-        //$lastId=$this->adapter->getDriver()->getConnection()->getLastGeneratedValue();
-        //return $lastId;
+        $result = $statement->execute();
     }
     /*public function fetchAll()
     {

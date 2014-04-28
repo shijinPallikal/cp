@@ -120,11 +120,21 @@ class IngredientController extends AbstractActionController
         {
             $this->layout('layout/adminDashboardLayout');
             $request= $this->getRequest();
+            $postData = $this->getRequest()->getPost()->toArray();
             if($request->isPost())
             {
-                if(!empty($postData['email'][0]))
-    		{
-    			//echo "haii";exit;
+                $productRowMaterial= new ProductRowmaterialModel();
+                for($i=0; $i< $request->getPost('cnt'); $i++)
+                {
+                    $productRowMaterial->setProduct($request->getPost('category'));
+                    $productRowMaterial->setRowmaterial($postData['product'][$i]);
+                    $productRowMaterial->setQuantity($postData['quantity'][$i]);
+                    $productRowMaterial->setUom($postData['uom'][$i]);
+                    $productRowMaterial->setRate($postData['rate'][$i]);
+                    $productRowMaterial->setStatus('1');
+                    $productRowMaterial->setCreatedOn(date('Y-m-d H:i:s'));
+                    $this->getProductRowmaterialTable()->inserts($productRowMaterial);
+                    
                 }
             }
             $page = (int) $this->params()->fromRoute('page', 1);
